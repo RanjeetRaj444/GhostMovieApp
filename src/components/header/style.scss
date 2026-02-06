@@ -12,11 +12,14 @@
     z-index: 2;
     &.top {
         background: rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(3.5px);
-        -webkit-backdrop-filter: blur(3.5px);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
     }
     &.show {
-        background-color: var(--black3);
+        background: rgba(2, 12, 27, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     &.hide {
         transform: translateY(-60px);
@@ -31,13 +34,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        gap: 12px;
         cursor: pointer;
         img {
-            height: 50px;
+            height: 40px;
         }
         h1{
-            color: orange;
+            color: var(--orange);
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     }
     .menuItems {
@@ -55,6 +64,7 @@
             color: white;
             font-weight: 500;
             position: relative;
+            transition: color 0.3s ease;
             &.searchIcon {
                 margin-right: 0;
             }
@@ -76,7 +86,7 @@
             display: none;
         }
         svg {
-            font-size: 18px;
+            font-size: 20px;
             color: white;
         }
     }
@@ -93,9 +103,9 @@
             width: 100%;
             padding: 20px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            animation: mobileMenu 0.3s ease forwards;
+            animation: mobileMenu 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             .menuItem {
-                font-size: 20px;
+                font-size: 18px;
                 width: 100%;
                 height: auto;
                 padding: 15px 20px;
@@ -103,6 +113,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
                 &:last-child {
                     display: none;
                 }
@@ -113,10 +124,13 @@
     .searchBar {
         width: 100%;
         height: 60px;
-        background-color: white;
+        background: rgba(2, 12, 27, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         position: absolute;
         top: 60px;
-        animation: mobileMenu 0.3s ease forwards;
+        animation: mobileMenu 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         .searchInput {
             display: flex;
             align-items: center;
@@ -128,20 +142,24 @@
                 flex-shrink: 0;
                 margin-left: 10px;
                 cursor: pointer;
+                color: white;
             }
             input {
                 width: 100%;
                 height: 50px;
-                background-color: white;
+                background-color: transparent;
                 outline: 0;
                 border: 0;
-                border-radius: 30px 0 0 30px;
+                color: white;
                 padding: 0 15px;
                 font-size: 14px;
                 @include md {
                     height: 60px;
                     font-size: 20px;
                     padding: 0 30px;
+                }
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.5);
                 }
             }
         }

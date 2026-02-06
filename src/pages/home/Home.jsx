@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./style.scss";
 
@@ -8,14 +8,18 @@ import Popular from "./popular/Popular";
 import TopRated from "./topRated/TopRated";
 
 const Home = () => {
-    return (
-        <div className="homePage">
-            <HeroBanner />
-            <Trending />
-            <Popular />
-            <TopRated />
-        </div>
-    );
+  useEffect(() => {
+    document.title = "GhostMovieApp | Home";
+  }, []);
+
+  return (
+    <div className="homePage">
+      <HeroBanner />
+      <Trending />
+      <Popular />
+      <TopRated />
+    </div>
+  );
 };
 
 export default Home;
