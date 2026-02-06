@@ -68,7 +68,7 @@ const Explore = () => {
     setSortby(null);
     setGenre(null);
     fetchInitialData();
-    document.title = `GhostMovieApp | Explore ${mediaType === "tv" ? "TV Shows" : "Movies"}`;
+    document.title = `G-movies | Explore ${mediaType === "tv" ? "TV Shows" : "Movies"}`;
   }, [mediaType]);
 
   const onChange = (selectedItems, action) => {

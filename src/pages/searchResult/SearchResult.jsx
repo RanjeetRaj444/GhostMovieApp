@@ -46,7 +46,7 @@ const SearchResult = () => {
   useEffect(() => {
     setPageNum(1);
     fetchInitialData();
-    document.title = `GhostMovieApp | Search: ${query}`;
+    document.title = `G-movies | Search: ${query}`;
   }, [query]);
 
   return (

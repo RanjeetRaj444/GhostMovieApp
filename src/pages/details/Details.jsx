@@ -19,7 +19,7 @@ const Details = () => {
 
   React.useEffect(() => {
     if (mainData?.name || mainData?.title) {
-      document.title = `GhostMovieApp | ${mainData?.name || mainData?.title}`;
+      document.title = `G-movies | ${mainData?.name || mainData?.title}`;
     }
   }, [mainData]);
 

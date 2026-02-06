@@ -9,7 +9,7 @@ import TopRated from "./topRated/TopRated";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "GhostMovieApp | Home";
+    document.title = "G-movies | Home";
   }, []);
 
   return (
