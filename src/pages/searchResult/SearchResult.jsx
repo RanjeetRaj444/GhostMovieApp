@@ -10,6 +10,8 @@ import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
 import noResults from "../../assets/no-results.png";
 
+import SEO from "../../components/seo/SEO";
+
 const SearchResult = () => {
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
@@ -46,11 +48,15 @@ const SearchResult = () => {
   useEffect(() => {
     setPageNum(1);
     fetchInitialData();
-    document.title = `G-movies | Search: ${query}`;
   }, [query]);
 
   return (
     <div className="searchResultsPage">
+      <SEO
+        title={`Search results for "${query}"`}
+        description={`Found ${data?.total_results || 0} results for "${query}" on G-movies. Explore movies and TV shows matching your search.`}
+        url={`/search/${query}`}
+      />
       {loading && <Spinner initial={true} />}
       {!loading && (
         <ContentWrapper>

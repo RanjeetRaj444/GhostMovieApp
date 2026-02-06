@@ -52,7 +52,10 @@ const DetailsBanner = ({ video, crew }) => {
           {!!data && (
             <React.Fragment>
               <div className="backdrop-img">
-                <Img src={url.backdrop + data.backdrop_path} />
+                <Img
+                  src={url.backdrop + data.backdrop_path}
+                  alt={data.name || data.title}
+                />
               </div>
               <div className="opacity-layer"></div>
               <ContentWrapper>
@@ -62,9 +65,14 @@ const DetailsBanner = ({ video, crew }) => {
                       <Img
                         className="posterImg"
                         src={url.backdrop + data.poster_path}
+                        alt={data.name || data.title}
                       />
                     ) : (
-                      <Img className="posterImg" src={PosterFallback} />
+                      <Img
+                        className="posterImg"
+                        src={PosterFallback}
+                        alt="No poster available"
+                      />
                     )}
                   </div>
                   <div className="right">

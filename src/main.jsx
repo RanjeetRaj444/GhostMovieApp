@@ -8,10 +8,14 @@ import { Provider } from "react-redux";
 
 import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
 
+import { HelmetProvider } from "react-helmet-async";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <HelmetProvider>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </HelmetProvider>
   </Provider>,
 );

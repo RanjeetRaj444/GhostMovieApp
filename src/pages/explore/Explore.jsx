@@ -26,6 +26,8 @@ const sortbyData = [
   { value: "original_title.asc", label: "Title (A-Z)" },
 ];
 
+import SEO from "../../components/seo/SEO";
+
 const Explore = () => {
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
@@ -68,7 +70,6 @@ const Explore = () => {
     setSortby(null);
     setGenre(null);
     fetchInitialData();
-    document.title = `G-movies | Explore ${mediaType === "tv" ? "TV Shows" : "Movies"}`;
   }, [mediaType]);
 
   const onChange = (selectedItems, action) => {
@@ -96,8 +97,15 @@ const Explore = () => {
     fetchInitialData();
   };
 
+  const pageTitle = mediaType === "tv" ? "Explore TV Shows" : "Explore Movies";
+
   return (
     <div className="explorePage">
+      <SEO
+        title={pageTitle}
+        description={`Browse through a wide collection of ${mediaType === "tv" ? "television series" : "cinema movies"}. Filter by genres and sort by popularity or ratings.`}
+        url={`/explore/${mediaType}`}
+      />
       <ContentWrapper>
         <div className="pageHeader">
           <div className="pageTitle">
