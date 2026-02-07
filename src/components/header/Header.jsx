@@ -7,8 +7,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./style.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import logo from "../../assets/movix-logo (3).png";
-// const logo=""
+// Use optimized logo (12.8 KB vs 712 KB original - 98% smaller)
+import logo from "../../assets/logo-optimized.png";
 
 const Header = () => {
   const [show, setShow] = useState("top");
