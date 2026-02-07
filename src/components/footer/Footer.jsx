@@ -20,16 +20,41 @@ const Footer = () => {
     { label: "DMCA", path: "/dmca" },
   ];
 
+  const socialLinks = [
+    {
+      icon: FaFacebookF,
+      label: "Follow us on Facebook",
+      url: "https://facebook.com",
+    },
+    {
+      icon: FaInstagram,
+      label: "Follow us on Instagram",
+      url: "https://instagram.com",
+    },
+    {
+      icon: FaTwitter,
+      label: "Follow us on Twitter",
+      url: "https://twitter.com",
+    },
+    {
+      icon: FaLinkedin,
+      label: "Connect on LinkedIn",
+      url: "https://linkedin.com",
+    },
+  ];
+
   return (
-    <footer className="footer">
+    <footer className="footer" role="contentinfo">
       <ContentWrapper>
-        <ul className="menuItems">
-          {menuItems.map((item, index) => (
-            <li key={index} className="menuItem">
-              <Link to={item.path}>{item.label}</Link>
-            </li>
-          ))}
-        </ul>
+        <nav aria-label="Footer navigation">
+          <ul className="menuItems">
+            {menuItems.map((item, index) => (
+              <li key={index} className="menuItem">
+                <Link to={item.path}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <div className="infoText">
           G-movies is your ultimate destination for exploring the world of
           cinema. Discover trending movies, top-rated TV shows, and detailed
@@ -38,19 +63,26 @@ const Footer = () => {
           reviews. Join our community of film lovers today and never miss a
           blockbuster again.
         </div>
-        <div className="socialIcons">
-          <span className="icon">
-            <FaFacebookF />
-          </span>
-          <span className="icon">
-            <FaInstagram />
-          </span>
-          <span className="icon">
-            <FaTwitter />
-          </span>
-          <span className="icon">
-            <FaLinkedin />
-          </span>
+        <div
+          className="socialIcons"
+          role="list"
+          aria-label="Social media links"
+        >
+          {socialLinks.map((social, index) => (
+            <a
+              key={index}
+              href={social.url}
+              className="icon"
+              aria-label={social.label}
+              title={social.label}
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+            >
+              <social.icon aria-hidden="true" />
+              <span className="visually-hidden">{social.label}</span>
+            </a>
+          ))}
         </div>
       </ContentWrapper>
     </footer>

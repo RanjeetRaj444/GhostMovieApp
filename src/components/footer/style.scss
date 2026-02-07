@@ -75,9 +75,15 @@
             justify-content: center;
             cursor: pointer;
             transition: all ease 0.3s;
+            color: white;
+            text-decoration: none;
             &:hover {
                 box-shadow: 0 0 0.625em var(--pink);
                 color: var(--pink);
+            }
+            &:focus {
+                outline: 2px solid var(--pink);
+                outline-offset: 2px;
             }
         }
     }

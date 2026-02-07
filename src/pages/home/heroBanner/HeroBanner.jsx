@@ -47,18 +47,25 @@ const HeroBanner = () => {
       <div className="opacity-layer"></div>
       <ContentWrapper>
         <div className="heroBannerContent">
-          <span className="title">Welcome.</span>
-          <span className="subTitle">
+          <h1 className="title">Welcome.</h1>
+          <p className="subTitle">
             Millions of movies, TV shows and people to discover. Explore now.
-          </span>
+          </p>
           <div className="searchInput">
+            <label htmlFor="movie-search" className="visually-hidden">
+              Search for movies or TV shows
+            </label>
             <input
+              id="movie-search"
               type="text"
               placeholder="Search for a movie or tv show...."
               onChange={(e) => setQuery(e.target.value)}
               onKeyUp={searchQueryHandler}
+              aria-label="Search for movies or TV shows"
             />
-            <button onClick={handleSearchClick}>Search</button>
+            <button onClick={handleSearchClick} aria-label="Search">
+              Search
+            </button>
           </div>
         </div>
       </ContentWrapper>

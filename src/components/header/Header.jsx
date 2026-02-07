@@ -74,55 +74,105 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
-      <ContentWrapper>
-        <div className="logo" onClick={() => navigate("/")}>
-          <img src={logo} alt="alt" />
-          <h1>G-movies</h1>
-        </div>
-        <ul className="menuItems">
-          <li className="menuItem" onClick={() => navigationHandler("movie")}>
-            Movies
-          </li>
-          <li className="menuItem" onClick={() => navigationHandler("tv")}>
-            TV Shows
-          </li>
-          <li
-            className="menuItem"
-            onClick={() => navigationHandler("watchlist")}
+    <>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
+        <ContentWrapper>
+          <div
+            className="logo"
+            onClick={() => navigate("/")}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && navigate("/")}
+            aria-label="Go to homepage"
           >
-            Watchlist
-          </li>
-          <li className="menuItem">
-            <HiOutlineSearch onClick={openSearch} />
-          </li>
-        </ul>
+            <img src={logo} alt="G-movies logo" />
+            <span className="logoText">G-movies</span>
+          </div>
+          <nav aria-label="Main navigation">
+            <ul className="menuItems">
+              <li
+                className="menuItem"
+                onClick={() => navigationHandler("movie")}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && navigationHandler("movie")
+                }
+              >
+                Movies
+              </li>
+              <li
+                className="menuItem"
+                onClick={() => navigationHandler("tv")}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && navigationHandler("tv")}
+              >
+                TV Shows
+              </li>
+              <li
+                className="menuItem"
+                onClick={() => navigationHandler("watchlist")}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && navigationHandler("watchlist")
+                }
+              >
+                Watchlist
+              </li>
+              <li className="menuItem">
+                <HiOutlineSearch
+                  onClick={openSearch}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Open search"
+                  onKeyDown={(e) => e.key === "Enter" && openSearch()}
+                />
+              </li>
+            </ul>
+          </nav>
 
-        <div className="mobileMenuItems">
-          <HiOutlineSearch onClick={openSearch} />
-          {mobileMenu ? (
-            <VscChromeClose onClick={() => setMobileMenu(false)} />
-          ) : (
-            <SlMenu onClick={openMobileMenu} />
-          )}
-        </div>
-      </ContentWrapper>
-      {showSearch && (
-        <div className="searchBar">
-          <ContentWrapper>
-            <div className="searchInput">
-              <input
-                type="text"
-                placeholder="Search for a movie or tv show...."
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyUp={searchQueryHandler}
+          <div className="mobileMenuItems">
+            <HiOutlineSearch onClick={openSearch} aria-label="Open search" />
+            {mobileMenu ? (
+              <VscChromeClose
+                onClick={() => setMobileMenu(false)}
+                aria-label="Close menu"
               />
-              <VscChromeClose onClick={() => setShowSearch(false)} />
-            </div>
-          </ContentWrapper>
-        </div>
-      )}
-    </header>
+            ) : (
+              <SlMenu onClick={openMobileMenu} aria-label="Open menu" />
+            )}
+          </div>
+        </ContentWrapper>
+        {showSearch && (
+          <div className="searchBar">
+            <ContentWrapper>
+              <div className="searchInput">
+                <label htmlFor="header-search" className="visually-hidden">
+                  Search for movies or TV shows
+                </label>
+                <input
+                  id="header-search"
+                  type="text"
+                  placeholder="Search for a movie or tv show...."
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyUp={searchQueryHandler}
+                  aria-label="Search for movies or TV shows"
+                />
+                <VscChromeClose
+                  onClick={() => setShowSearch(false)}
+                  aria-label="Close search"
+                />
+              </div>
+            </ContentWrapper>
+          </div>
+        )}
+      </header>
+    </>
   );
 };
 
