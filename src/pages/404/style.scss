@@ -1,17 +1,91 @@
+@import "../../mixins.scss";
+
 .pageNotFound {
-    height: 700px;
+    min-height: 100vh;
     padding-top: 200px;
+    padding-bottom: 100px;
+    background: linear-gradient(180deg, #04152d 0%, #041226 100%);
+
+    @include md {
+        padding-top: 150px;
+        padding-bottom: 50px;
+    }
+
     .contentWrapper {
         text-align: center;
         color: var(--black-light);
         display: flex;
         flex-direction: column;
+        align-items: center;
+
         .bigText {
-            font-size: 150px;
+            font-size: 180px;
             font-weight: 700;
+            background: linear-gradient(90deg, #da2f68 0%, #f89e00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 20px;
+
+            @include md {
+                font-size: 120px;
+            }
+
+            @include sm {
+                font-size: 80px;
+            }
         }
+
         .smallText {
-            font-size: 44px;
+            font-size: 48px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+
+            @include md {
+                font-size: 32px;
+            }
+
+            @include sm {
+                font-size: 24px;
+            }
+        }
+
+        .description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+
+            @include md {
+                font-size: 16px;
+                padding: 0 20px;
+            }
+        }
+
+        .homeBtn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #da2f68 0%, #f89e00 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(218, 47, 104, 0.4);
+            }
+
+            @include sm {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
         }
     }
 }
+

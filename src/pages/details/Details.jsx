@@ -10,6 +10,7 @@ import Similar from "./carousels/Similar";
 import Recommendation from "./carousels/Recommendation";
 
 import SEO from "../../components/seo/SEO";
+import MovieSchema from "../../components/movieSchema/MovieSchema";
 
 const Details = () => {
   const { mediaType, id } = useParams();
@@ -24,6 +25,9 @@ const Details = () => {
     ? mainData.overview.slice(0, 160) + "..."
     : `Watch ${itemTitle} on G-movies. Explore cast, trailers, and similar recommendations.`;
 
+  // Prepare movie data with credits for schema
+  const movieDataWithCredits = mainData ? { ...mainData, credits } : null;
+
   return (
     <div>
       <SEO
@@ -33,6 +37,7 @@ const Details = () => {
         url={`/${mediaType}/${id}`}
         type="video.movie"
       />
+      <MovieSchema movie={movieDataWithCredits} mediaType={mediaType} />
       <DetailsBanner video={videoData?.results?.[0]} crew={credits?.crew} />
       <Cast data={credits?.cast} loading={creditsLoading} />
       <VideosSection data={videoData} loading={loading} />

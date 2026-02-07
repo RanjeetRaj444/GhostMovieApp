@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
@@ -11,15 +12,23 @@ import ContentWrapper from "../contentWrapper/ContentWrapper";
 import "./style.scss";
 
 const Footer = () => {
+  const menuItems = [
+    { label: "Terms Of Use", path: "/terms-of-service" },
+    { label: "Privacy Policy", path: "/privacy-policy" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
+    { label: "DMCA", path: "/dmca" },
+  ];
+
   return (
     <footer className="footer">
       <ContentWrapper>
         <ul className="menuItems">
-          <li className="menuItem">Terms Of Use</li>
-          <li className="menuItem">Privacy-Policy</li>
-          <li className="menuItem">About</li>
-          <li className="menuItem">Blog</li>
-          <li className="menuItem">FAQ</li>
+          {menuItems.map((item, index) => (
+            <li key={index} className="menuItem">
+              <Link to={item.path}>{item.label}</Link>
+            </li>
+          ))}
         </ul>
         <div className="infoText">
           G-movies is your ultimate destination for exploring the world of

@@ -14,6 +14,16 @@ import Explore from "./pages/explore/Explore";
 import Watchlist from "./pages/watchlist/Watchlist";
 import PageNotFound from "./pages/404/PageNotFound";
 
+// Legal Pages
+import Privacy from "./pages/privacy/Privacy";
+import Terms from "./pages/terms/Terms";
+import About from "./pages/about/About";
+import Contact from "./pages/contact/Contact";
+import DMCA from "./pages/dmca/DMCA";
+
+// Cookie Consent
+import CookieConsent from "./components/cookieConsent/CookieConsent";
+
 function App() {
   const dispatch = useDispatch();
   const { url } = useSelector((state) => state.home);
@@ -61,9 +71,16 @@ function App() {
         <Route path="/search/:query" element={<SearchResult />} />
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="/watchlist" element={<Watchlist />} />
+        {/* Legal Pages */}
+        <Route path="/privacy-policy" element={<Privacy />} />
+        <Route path="/terms-of-service" element={<Terms />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/dmca" element={<DMCA />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
+      <CookieConsent />
     </BrowserRouter>
   );
 }
