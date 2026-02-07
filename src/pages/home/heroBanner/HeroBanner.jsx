@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import "./style.scss";
 
 import useFetch from "../../../hooks/useFetch";
-
-import Img from "../../../components/lazyLoadImage/Img";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 const HeroBanner = () => {
@@ -16,10 +14,14 @@ const HeroBanner = () => {
   const { data, loading } = useFetch("/movie/upcoming");
 
   useEffect(() => {
-    const bg =
-      url.backdrop +
-      data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
-    setBackground(bg);
+    if (data?.results?.length > 0 && url.backdrop) {
+      // Pick a random movie from top 5 for hero image
+      const randomIndex = Math.floor(
+        Math.random() * Math.min(5, data.results.length),
+      );
+      const bg = url.backdrop + data.results[randomIndex]?.backdrop_path;
+      setBackground(bg);
+    }
   }, [data, url.backdrop]);
 
   const searchQueryHandler = (event) => {
@@ -36,9 +38,17 @@ const HeroBanner = () => {
 
   return (
     <div className="heroBanner">
-      {!loading ? (
+      {!loading && background ? (
         <div className="backdrop-img">
-          <Img src={background} />
+          {/* Use native img with eager loading for LCP optimization */}
+          <img
+            src={background}
+            alt="Featured movie backdrop"
+            className="hero-background"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
       ) : (
         <div className="backdrop-img skeleton"></div>

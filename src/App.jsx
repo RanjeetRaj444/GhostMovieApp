@@ -62,10 +62,14 @@ function App() {
 
   const fetchApiConfig = () => {
     fetchDataFromApi("/configuration").then((res) => {
+      // Use optimized image sizes instead of 'original' for better performance
+      // backdrop: w1280 for hero images (1280px wide, ~100-200KB vs 3-5MB for original)
+      // poster: w500 for movie cards (500px wide, ~30-50KB vs 500KB+ for original)
+      // profile: w185 for actor thumbnails (185px wide, ~10-20KB)
       const url = {
-        backdrop: res.images.secure_base_url + "original",
-        poster: res.images.secure_base_url + "original",
-        profile: res.images.secure_base_url + "original",
+        backdrop: res.images.secure_base_url + "w1280",
+        poster: res.images.secure_base_url + "w500",
+        profile: res.images.secure_base_url + "w185",
       };
 
       dispatch(getApiConfiguration(url));
