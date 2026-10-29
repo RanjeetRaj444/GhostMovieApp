@@ -1,0 +1,77 @@
+.hero {
+  padding: 72px 0 40px;
+  background: radial-gradient(
+    120% 120% at 50% 0%,
+    rgba(218, 47, 104, 0.18) 0%,
+    rgba(4, 21, 45, 0) 55%
+  );
+}
+
+.heroTitle {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  max-width: 720px;
+
+  @media (min-width: 768px) {
+    font-size: 56px;
+  }
+}
+
+.heroSub {
+  margin-top: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 620px;
+}
+
+.heroCtas {
+  margin-top: 28px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primaryCta,
+.secondaryCta {
+  padding: 13px 26px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.primaryCta {
+  background: var(--gradient);
+  color: #fff;
+}
+
+.secondaryCta {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.about {
+  margin: 64px auto;
+  max-width: 820px;
+
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  em {
+    color: #fff;
+    font-style: italic;
+  }
+}

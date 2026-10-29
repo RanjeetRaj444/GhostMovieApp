@@ -1,0 +1,95 @@
+.wrap {
+  padding-top: 32px;
+  padding-bottom: 48px;
+}
+
+.header {
+  max-width: 720px;
+  margin-bottom: 36px;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 14px;
+
+    @media (min-width: 768px) {
+      font-size: 42px;
+    }
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+}
+
+.providerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 48px;
+
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.providerCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 20px;
+  border-radius: 14px;
+  background: var(--black2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--accent, var(--pink));
+  transition: transform 0.2s, background 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);
+    background: var(--black-light);
+  }
+}
+
+.pName {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pMeta {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.popularGuides {
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+}
+
+.guideLinks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  a {
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--pink);
+    }
+  }
+}

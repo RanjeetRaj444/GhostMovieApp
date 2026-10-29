@@ -1,0 +1,129 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(4, 18, 38, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 64px;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.nav {
+  display: none;
+  gap: 24px;
+  margin-left: 24px;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+
+  a {
+    font-weight: 600;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.2s;
+    &:hover {
+      color: var(--pink);
+    }
+  }
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.menuToggle {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.nav.open {
+  display: flex;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  background: var(--black2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  a {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+}
+
+.searchBar {
+  background: var(--black2);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  :global(.container) {
+    display: flex;
+    gap: 8px;
+  }
+
+  input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--black);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    &:focus {
+      border-color: var(--pink);
+    }
+  }
+
+  button {
+    padding: 0 18px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+}

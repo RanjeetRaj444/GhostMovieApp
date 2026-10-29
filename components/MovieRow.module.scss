@@ -1,0 +1,47 @@
+.section {
+  margin: 40px 0;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+
+    @media (min-width: 768px) {
+      font-size: 26px;
+    }
+  }
+}
+
+.viewAll {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pink);
+  white-space: nowrap;
+}
+
+.scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 42%;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+
+  @media (min-width: 640px) {
+    grid-auto-columns: 26%;
+  }
+  @media (min-width: 1024px) {
+    grid-auto-columns: 16.5%;
+  }
+
+  .item {
+    scroll-snap-align: start;
+  }
+}
