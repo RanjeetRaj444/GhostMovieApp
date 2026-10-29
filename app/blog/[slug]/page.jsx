@@ -6,6 +6,7 @@ import { getAllArticles, getArticle } from "@/content/articles";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ArticleBody from "@/components/ArticleBody";
+import AdSlot from "@/components/AdSlot";
 import styles from "./article.module.scss";
 
 export function generateStaticParams() {
@@ -88,6 +89,10 @@ export default function ArticlePage({ params }) {
         </header>
 
         <ArticleBody blocks={article.blocks} />
+
+        {/* Ready for ads once approved: set NEXT_PUBLIC_ADS_ENABLED=true and
+            pass a real ad unit slot id. Renders nothing until then. */}
+        <AdSlot slot={process.env.NEXT_PUBLIC_AD_SLOT_ARTICLE} />
       </article>
 
       <section className={styles.related}>

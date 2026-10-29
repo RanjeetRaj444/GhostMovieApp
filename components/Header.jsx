@@ -49,6 +49,9 @@ export default function Header() {
           <Link href="/blog" onClick={() => setMobileMenu(false)}>
             Guides
           </Link>
+          <Link href="/watchlist" onClick={() => setMobileMenu(false)}>
+            Watchlist
+          </Link>
         </nav>
 
         <div className={styles.actions}>

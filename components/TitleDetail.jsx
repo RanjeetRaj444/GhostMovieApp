@@ -9,6 +9,7 @@ import {
   buildTitleJsonLd,
 } from "@/lib/title";
 import WatchProviders from "./WatchProviders";
+import WatchlistButton from "./WatchlistButton";
 import MovieRow from "./MovieRow";
 import styles from "./TitleDetail.module.scss";
 
@@ -23,6 +24,16 @@ export default function TitleDetail({ mediaType, details, providers }) {
   const backdrop = IMG.backdrop(details.backdrop_path, "w1280");
   const poster = IMG.poster(details.poster_path, "w500");
   const jsonLd = buildTitleJsonLd(mediaType, details, providers);
+
+  // Compact, serializable payload stored in the viewer's watchlist.
+  const watchItem = {
+    id: details.id,
+    media_type: mediaType,
+    title: name,
+    poster_path: details.poster_path,
+    vote_average: details.vote_average,
+    release_date: date,
+  };
 
   return (
     <>
@@ -79,6 +90,9 @@ export default function TitleDetail({ mediaType, details, providers }) {
                   {g.name}
                 </span>
               ))}
+            </div>
+            <div className={styles.actions}>
+              <WatchlistButton item={watchItem} />
             </div>
           </div>
         </div>

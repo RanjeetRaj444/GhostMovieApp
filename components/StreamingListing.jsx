@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Breadcrumbs from "./Breadcrumbs";
 import MovieGrid from "./MovieGrid";
+import AdSlot from "./AdSlot";
 import { GENRES } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
 import { toSlug } from "@/lib/slug";
@@ -74,6 +75,8 @@ export default function StreamingListing({
       </div>
 
       <MovieGrid items={results} mediaType="movie" />
+
+      <AdSlot slot={process.env.NEXT_PUBLIC_AD_SLOT_LISTING} />
 
       {totalPages > 1 && (
         <div className={styles.pagination}>
