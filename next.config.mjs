@@ -1,3 +1,10 @@
+import dns from "node:dns";
+
+// Prefer IPv4 when resolving hostnames. On some networks (notably many
+// Indian ISPs on Windows), Node's fetch/undici tries IPv6 first and stalls
+// for ~10s before failing, which makes TMDB calls time out. This fixes it.
+dns.setDefaultResultOrder("ipv4first");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
