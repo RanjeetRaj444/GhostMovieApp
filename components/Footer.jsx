@@ -23,6 +23,7 @@ export default function Footer() {
             <Link href="/explore/tv">TV Shows</Link>
             <Link href="/streaming">Where to Watch</Link>
             <Link href="/lists">Curated Lists</Link>
+            <Link href="/blog">Guides &amp; Articles</Link>
           </nav>
 
           <nav aria-label="Company">

@@ -1,6 +1,7 @@
 import { SITE_URL } from "@/lib/config";
 import { getPopular, getTrending } from "@/lib/tmdb";
 import { PROVIDERS, GENRES } from "@/lib/catalog";
+import { getAllArticles } from "@/content/articles";
 import { toSlug } from "@/lib/slug";
 
 export const revalidate = 86400;
@@ -11,6 +12,7 @@ const STATIC_ROUTES = [
   "/explore/tv",
   "/streaming",
   "/lists",
+  "/blog",
   "/about",
   "/contact",
   "/privacy-policy",
@@ -41,6 +43,13 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
+  const blog = getAllArticles().map((a) => ({
+    url: `${SITE_URL}/blog/${a.slug}`,
+    lastModified: new Date(a.updated || a.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   // Include popular + trending movie pages so Google discovers deep content.
   let movies = [];
   try {
@@ -63,5 +72,5 @@ export default async function sitemap() {
     // If TMDB is unavailable at build time, ship the static routes only.
   }
 
-  return [...base, ...streaming, ...movies];
+  return [...base, ...streaming, ...blog, ...movies];
 }
