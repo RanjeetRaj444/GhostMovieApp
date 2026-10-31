@@ -44,6 +44,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="" />
+        {/* Warm up the connection to the ad network so it doesn't delay paint */}
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
       </head>
       <body>
         <a href="#main-content" className="skip-link">
