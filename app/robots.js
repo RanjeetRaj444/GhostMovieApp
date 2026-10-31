@@ -9,6 +9,7 @@ export default function robots() {
       disallow: ["/watchlist", "/search"],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    // Note: no `host` directive — Googlebot ignores it (non-standard), and
+    // Search Console flags it as "Rule ignored".
   };
 }
