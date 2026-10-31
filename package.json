@@ -18,5 +18,12 @@
   },
   "devDependencies": {
     "sass": "^1.80.0"
-  }
+  },
+  "browserslist": [
+    "chrome >= 91",
+    "edge >= 91",
+    "firefox >= 90",
+    "safari >= 15",
+    "ios_saf >= 15"
+  ]
 }

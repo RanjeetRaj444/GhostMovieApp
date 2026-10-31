@@ -8,6 +8,11 @@ dns.setDefaultResultOrder("ipv4first");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Tree-shake react-icons so only the icons actually used ship to the client
+  // (cuts a chunk of "unused JavaScript").
+  experimental: {
+    optimizePackageImports: ["react-icons"],
+  },
   images: {
     // TMDB image CDN — allow remote posters/backdrops + provider logos
     remotePatterns: [
