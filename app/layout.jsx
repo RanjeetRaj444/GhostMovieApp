@@ -1,5 +1,4 @@
 import "@/styles/globals.scss";
-import Script from "next/script";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -47,6 +46,13 @@ export default function RootLayout({ children }) {
         {/* Warm up the connection to the ad network so it doesn't delay paint */}
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        {/* Google AdSense loader — plain tag in <head>, exactly as AdSense
+            recommends (avoids Next's data-nscript attribute warning). */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <a href="#main-content" className="skip-link">
@@ -55,15 +61,6 @@ export default function RootLayout({ children }) {
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
-
-        {/* Google AdSense — loads after the page is interactive */}
-        <Script
-          id="adsbygoogle-init"
-          async
-          strategy="afterInteractive"
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-          crossOrigin="anonymous"
-        />
 
         <Analytics />
       </body>
